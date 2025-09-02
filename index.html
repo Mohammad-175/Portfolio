@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mohammad Ansari — UI/UX Designer</title>
+  <meta name="description" content="Portfolio of Mohammad Ansari — Product & UI/UX designer. Case studies, services, and contact." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* -------------------------
+       Variables & base
+       ------------------------- */
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#94a3b8;
+      --accent:#7c3aed; /* purple */
+      --glass: rgba(255,255,255,0.04);
+      --radius:14px;
+      --max-width:1100px;
+      --accent-2: #06b6d4;
+      color-scheme: dark;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: linear-gradient(180deg,#071028 0%, var(--bg) 60%);
+      color: #e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.4;
+      padding:32px 20px;
+      display:flex;
+      justify-content:center;
+      font-size:16px;
+    }
+    .wrap{max-width:var(--max-width);width:100%}
+
+    /* -------------------------
+       Top nav / hero
+       ------------------------- */
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      margin-bottom:28px;
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{
+      width:46px;height:46px;border-radius:10px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:inline-grid;place-items:center;font-weight:800;color:white;font-size:18px
+    }
+    .brand h1{font-size:18px;margin:0}
+    nav{display:flex;gap:14px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:600}
+    nav a:hover{color:var(--accent);background:var(--glass)}
+    .cta{background:linear-gradient(90deg,var(--accent),var(--accent-2));padding:10px 14px;border-radius:12px;color:white;text-decoration:none;font-weight:700}
+
+    /* hero */
+    .hero{
+      background: linear-gradient(180deg, rgba(124,58,237,0.06), transparent);
+      border-radius:var(--radius);
+      padding:34px;
+      display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center;
+      box-shadow: 0 6px 30px rgba(2,6,23,0.6);
+    }
+    .intro h2{margin:0 0 8px 0;font-size:28px}
+    .intro p{color:var(--muted);margin:0 0 18px}
+    .roles{display:flex;gap:8px;flex-wrap:wrap}
+    .pill{padding:8px 10px;border-radius:999px;background:rgba(255,255,255,0.03);font-weight:600;color:var(--muted);font-size:14px}
+    .hero-right{display:flex;flex-direction:column;gap:14px}
+    .profile-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;display:flex;gap:12px;align-items:center}
+    .avatar{width:74px;height:74px;border-radius:12px;background:linear-gradient(135deg,#3b82f6,#8b5cf6);display:grid;place-items:center;font-weight:800}
+    .small{font-size:13px;color:var(--muted)}
+
+    /* -------------------------
+       Sections
+       ------------------------- */
+    section{margin-top:22px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 20px rgba(2,6,23,0.6)}
+    .portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .project{position:relative;border-radius:10px;overflow:hidden;min-height:160px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));cursor:pointer}
+    .project .meta{position:absolute;left:14px;bottom:12px;background:rgba(0,0,0,0.35);backdrop-filter: blur(6px);padding:8px 10px;border-radius:8px}
+    .project h4{margin:0 0 6px}
+    .muted{color:var(--muted)}
+
+    /* case studies */
+    .case{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch}
+    .case .visual{border-radius:12px;min-height:260px;background:linear-gradient(135deg,#0b1220,#082033);display:grid;place-items:center}
+    .case .content h3{margin-top:0}
+    .tags{display:flex;gap:8px;flex-wrap:wrap}
+
+    /* footer */
+    footer{margin-top:32px;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);display:flex;justify-content:space-between;align-items:center}
+
+    /* -------------------------
+       Responsive
+       ------------------------- */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;}
+      .portfolio-grid, .grid-3{grid-template-columns:repeat(2,1fr)}
+      .case{grid-template-columns:1fr}
+    }
+    @media (max-width:560px){
+      body{padding:18px}
+      nav{display:none}
+      .portfolio-grid{grid-template-columns:1fr}
+      .brand h1{font-size:16px}
+    }
+
+    /* subtle micro-interactions */
+    a.button-like{transition:transform .16s ease, box-shadow .16s ease}
+    a.button-like:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(2,6,23,0.6)}
+
+    /* accessible focus */
+    a:focus, button:focus{outline:3px solid rgba(124,58,237,0.22);outline-offset:3px}
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">MA</div>
+        <div>
+          <h1>Mohammad Ansari</h1>
+          <div class="small">Senior UI/UX Designer — Product & Interaction</div>
+        </div>
+      </div>
+      <nav aria-label="Main navigation">
+        <a href="#work">Work</a>
+        <a href="#process">Process</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="cta button-like">Hire me</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <main class="hero" role="main">
+      <div class="intro">
+        <h2>Designing thoughtful product experiences that people love.</h2>
+        <p class="muted">I help startups and products turn complex problems into clear, delightful interfaces — from research and strategy to polished UI and handoff-ready prototypes.</p>
+        <div class="roles">
+          <div class="pill">Product Design</div>
+          <div class="pill">UX Research</div>
+          <div class="pill">Design Systems</div>
+          <div class="pill">Prototyping</div>
+        </div>
+
+        <div style="margin-top:18px;display:flex;gap:10px">
+          <a class="cta button-like" href="#work">View work</a>
+          <a class="pill" href="#contact">Download CV</a>
+        </div>
+
+        <section id="stats" style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap">
+          <div class="card" style="display:flex;gap:12px;align-items:center">
+            <div style="font-weight:800;font-size:20px">8+</div>
+            <div>
+              <div class="small">Years experience</div>
+            </div>
+          </div>
+          <div class="card" style="display:flex;gap:12px;align-items:center">
+            <div style="font-weight:800;font-size:20px">30+</div>
+            <div>
+              <div class="small">Projects shipped</div>
+            </div>
+          </div>
+          <div class="card" style="display:flex;gap:12px;align-items:center">
+            <div style="font-weight:800;font-size:20px">10</div>
+            <div>
+              <div class="small">Companies worked with</div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <aside class="hero-right">
+        <div class="profile-card">
+          <div class="avatar">MA</div>
+          <div>
+            <div style="font-weight:800">Mohammad Ansari</div>
+            <div class="small">Available for freelance & full-time</div>
+            <div style="margin-top:8px"><a href="#contact" class="pill">Let's talk</a></div>
+          </div>
+        </div>
+
+        <div class="card small">
+          <div style="font-weight:700;margin-bottom:8px">Selected tools</div>
+          <div class="muted">Figma • FigJam • Miro • Notion • Webflow • Principle • Zeplin</div>
+        </div>
+
+        <div class="card small">
+          <div style="font-weight:700;margin-bottom:8px">Specialities</div>
+          <div class="muted">Design systems, interaction design, onboarding flows, mobile-first UX</div>
+        </div>
+      </aside>
+    </main>
+
+    <!-- WORK -->
+    <section id="work">
+      <h3 style="margin:10px 0">Featured work</h3>
+      <div class="portfolio-grid">
+        <!-- Project 1 -->
+        <article class="project" tabindex="0" role="article" aria-labelledby="p1" onclick="window.location.href='project1.html'">
+          <div style="position:absolute;inset:0;background-image:linear-gradient(180deg, rgba(124,58,237,0.10), rgba(6,182,212,0.06));"></div>
+          <div style="position:absolute;inset:0;background-size:cover;background-position:center;opacity:.14;filter:grayscale(20%);"></div>
+          <div class="meta">
+            <h4 id="p1">Real Estate</h4>
+            <div class="muted">Payments • Onboarding • Design system</div>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project" tabindex="0" role="article" aria-labelledby="p2" onclick="window.location.href='project2.html'">
+          <div style="position:absolute;inset:0;background-image:linear-gradient(180deg, rgba(6,182,212,0.08), rgba(124,58,237,0.04));"></div>
+          <div class="meta">
+            <h4 id="p2">Donation for poor Children</h4>
+            <div class="muted">Checkout optimization • A/B tests</div>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project" tabindex="0" role="article" aria-labelledby="p3" onclick="window.location.href='project3.html'">
+          <div style="position:absolute;inset:0;background-image:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(124,58,237,0.03));"></div>
+          <div class="meta">
+            <h4 id="p3">Virtual Reality </h4>
+            <div class="muted">Patient flows • Accessibility</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CASE STUDY (sample) -->
+    <section id="case-study">
+      <h3 style="margin:12px 0">Case study — FinFlow</h3>
+      <div class="case">
+        <div class="visual" aria-hidden="true">
+          <div style="text-align:center;max-width:220px">
+            <div style="font-weight:800;font-size:28px;margin-bottom:8px">FinFlow</div>
+            <div class="small muted">Mobile banking redesign</div>
+          </div>
+        </div>
+        <div class="content card">
+          <h3>Problem</h3>
+          <p class="muted">High dropoff during onboarding and a confusing payments flow increased support costs and reduced activation.</p>
+
+          <h3 style="margin-top:12px">Approach</h3>
+          <ol class="muted">
+            <li>Qualitative interviews with 12 users</li>
+            <li>Task analysis and journey mapping</li>
+            <li>Rapid prototypes and validation with usability tests</li>
+            <li>Design system for consistency and faster handoffs</li>
+          </ol>
+
+          <div style="margin-top:12px" class="tags">
+            <div class="pill">Research</div>
+            <div class="pill">Prototyping</div>
+            <div class="pill">Design System</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process">
+      <h3 style="margin:12px 0">Design process</h3>
+      <div class="grid-3">
+        <div class="card">
+          <h4>Discover</h4>
+          <p class="muted">Stakeholder interviews, user research, problem framing, and success metrics.</p>
+        </div>
+        <div class="card">
+          <h4>Design</h4>
+          <p class="muted">Wireframes, interaction design, prototypes and accessible UI patterns.</p>
+        </div>
+        <div class="card">
+          <h4>Deliver</h4>
+          <p class="muted">Design systems, documentation, developer handoff and growth experiments.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h3 style="margin:12px 0">About</h3>
+      <div class="card">
+        <p class="muted">I'm Mohammad — a product-focused designer who loves clarifying complexity with simple interfaces. I pair user research with pixel-perfect UI and strong handoffs so engineering can ship faster. Outside work I mentor junior designers and run workshops on design systems.</p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h3 style="margin:12px 0">Contact</h3>
+      <div class="card" style="display:flex;gap:18px;flex-wrap:wrap;align-items:center">
+        <form id="contactForm" style="flex:1;min-width:260px;">
+          <label class="small" for="name">Name</label>
+          <input id="name" name="name" required placeholder="Your name" style="width:100%;padding:10px;margin:8px 0;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit">
+          <label class="small" for="email">Email</label>
+          <input id="email" name="email" type="email" required placeholder="you@company.com" style="width:100%;padding:10px;margin:8px 0;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit">
+          <label class="small" for="message">Message</label>
+          <textarea id="message" name="message" rows="4" placeholder="Tell me about your project" style="width:100%;padding:10px;margin:8px 0;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit"></textarea>
+          <div style="display:flex;gap:10px;align-items:center;margin-top:8px">
+            <button type="submit" class="cta button-like">Send message</button>
+            <div class="muted small">Or email — <a href="mailto:mohammad.ansari@example.com" style="color:var(--accent);text-decoration:none">mohammad.ansari@example.com</a></div>
+          </div>
+        </form>
+
+        <div style="min-width:220px">
+          <div style="font-weight:700">Availability</div>
+          <div class="muted">Open to freelance and full-time — GMT+5:30</div>
+
+          <div style="margin-top:12px">
+            <div style="font-weight:700">Location</div>
+            <div class="muted">Mumbai / Remote</div>
+          </div>
+
+          <div style="margin-top:12px">
+            <div style="font-weight:700">Linked profiles</div>
+            <div class="muted"><a href="#" style="color:var(--accent);text-decoration:none">Dribbble</a> • <a href="#" style="color:var(--accent);text-decoration:none">Behance</a> • <a href="#" style="color:var(--accent);text-decoration:none">LinkedIn</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="muted">© <span id="year"></span> Mohammad Ansari — UI/UX • Product design</div>
+      <div class="muted">Designed with care — <a href="#about" style="color:var(--accent);text-decoration:none">Read my process</a></div>
+    </footer>
+  </div>
+
+  <script>
+    // Small interactive behaviours:
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Simple form validation + mock submit
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      if(!name || !email || !message) {
+        alert('Please complete all fields.');
+        return;
+      }
+      // Mock success state — replace with your backend endpoint
+      const btn = document.querySelector('#contactForm button');
+      const original = btn.textContent;
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      setTimeout(()=>{
+        btn.textContent = 'Message sent';
+        btn.disabled = false;
+        alert('Thanks, '+name+" — I'll get back to you soon.");
+        btn.textContent = original;
+        document.getElementById('contactForm').reset();
+      }, 900);
+    });
+
+    // keyboard accessible project previews (example of minimal interaction)
+    document.querySelectorAll('.project').forEach((el)=>{
+      el.addEventListener('keydown', (e)=>{ if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); el.click(); } });
+    });
+
+    // If you want to quickly customize the name shown on the page dynamically:
+    // change the values here and the page updates without editing HTML.
+    (function setName(){
+      const name = 'Mohammad Ansari';
+      document.querySelector('.brand h1').textContent = name;
+      document.querySelector('.avatar').textContent = name.split(' ').map(s=>s[0]).slice(0,2).join('');
+    })();
+  </script>
+</body>
+</html>
